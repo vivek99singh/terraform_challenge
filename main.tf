@@ -110,3 +110,9 @@ resource "azurerm_container_group" "example" {
     }
   }
 }
+
+resource "null_resource" "challenge2" {
+  provisioner "local-exec" {
+    command = "az webapp deployment source config --name ${azurerm_app_service.webapp1.name} --resource-group ${azurerm_resource_group.dev.name} --repo-url https://github.com/vivek.99.singh/AzureEats-Website --branch master --repository-type github --git-token ea6c454072a3c398e8c8ed802d0e14ef21c47852"
+  }
+}
